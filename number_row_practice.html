@@ -1,0 +1,30 @@
+<html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<body>
+<div id="numberArea" style="background-color: purple; width: 100px; height: 100px; color: yellow;"></div>
+<input id="whichkey" value="" />
+<div id="divArea" style="background-color: silver; width: 100px; height: 100px;">
+</div>
+<script type="text/javascript">
+var now = new Date().getTime();
+var num = Math.floor(Math.random()*100) + 1;
+$("#numberArea").text(num);
+$("#whichkey").bind("keydown", function(event)
+{
+        // $("#divArea").text(fromCharCode(event.which));
+})
+$("#whichkey").bind("keyup", function(event)
+{
+    if ( $("#whichkey").val() == $("#numberArea").text() ) {
+        var num = Math.floor(Math.random()*100) + 1;
+        $("#numberArea").text(num);
+        $("#whichkey").val('');
+        new_now = new Date().getTime();
+        $("#divArea").text(new_now - now);
+        now = new_now;
+    }
+}
+);
+</script>
+</body>
+</html>
