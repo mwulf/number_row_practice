@@ -1,0 +1,10 @@
+
+.number_area {
+    background-color: purple;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 24pt;
+    width: 100px;
+    height: 100px;
+    color: yellow;
+}
