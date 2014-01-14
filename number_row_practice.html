@@ -5,12 +5,13 @@
 </head>
 <body>
 <!-- <div id="numberArea" style="background-color: purple; width: 100px; height: 100px; color: yellow;"></div> -->
+<div id="wholePage" class="whole_page_container">
 <div id="numberArea" class="number_area"></div>
 <input id="whichkey" value="" />
-<div id="divArea" class="stats_area">
-<ol></ol>
-</div>
 <input id="startButton" type="button" value="start" />
+<div id="divArea" class="stats_area">
+</div>
+</div>
 <script type="text/javascript">
 UPPER_BOUND=10;
 ITERATIONS=10;
@@ -19,7 +20,7 @@ $("#startButton").bind("click", function(event) {
     var now = new Date().getTime();
     var startTime = now;
     var num = Math.floor(Math.random()*UPPER_BOUND);
-    $("#divArea > ol").text('');
+    $("#divArea").html("<ol></ol>");
     $("#numberArea").text(num);
     $("#whichkey").bind("keyup", function(event)
     {
