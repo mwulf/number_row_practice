@@ -8,10 +8,13 @@
 <div id="numberArea" class="number_area"></div>
 <input id="whichkey" value="" />
 <div id="divArea" style="background-color: silver; width: 100px; height: 100px;">
+<ol></ol>
 </div>
 <input id="startButton" type="button" value="start" />
 <script type="text/javascript">
 UPPER_BOUND=10;
+ITERATIONS=10;
+idx = 0;
 $("#startButton").bind("click", function(event) {
     var now = new Date().getTime();
     var num = Math.floor(Math.random()*UPPER_BOUND);
@@ -23,8 +26,12 @@ $("#startButton").bind("click", function(event) {
             $("#numberArea").text(num);
             $("#whichkey").val('');
             new_now = new Date().getTime();
-            $("#divArea").text(new_now - now);
+            $("#divArea > ol").append('<li>' + (new_now - now) + '</li>');
             now = new_now;
+            idx++;
+            if (idx >= ITERATIONS) {
+                $("#whichkey").unbind("keyup");
+            }
         }
     }
     );
