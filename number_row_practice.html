@@ -7,7 +7,7 @@
 <!-- <div id="numberArea" style="background-color: purple; width: 100px; height: 100px; color: yellow;"></div> -->
 <div id="numberArea" class="number_area"></div>
 <input id="whichkey" value="" />
-<div id="divArea" style="background-color: silver; width: 100px; height: 100px;">
+<div id="divArea" class="stats_area">
 <ol></ol>
 </div>
 <input id="startButton" type="button" value="start" />
@@ -17,7 +17,9 @@ ITERATIONS=10;
 idx = 0;
 $("#startButton").bind("click", function(event) {
     var now = new Date().getTime();
+    var startTime = now;
     var num = Math.floor(Math.random()*UPPER_BOUND);
+    $("#divArea > ol").text('');
     $("#numberArea").text(num);
     $("#whichkey").bind("keyup", function(event)
     {
@@ -31,6 +33,12 @@ $("#startButton").bind("click", function(event) {
             idx++;
             if (idx >= ITERATIONS) {
                 $("#whichkey").unbind("keyup");
+                $("#numberArea").text('');
+                $("#whichkey").val('');
+                idx=0;
+                endTime = new Date().getTime();
+                $("#divArea").append('<p>Total time: <b>' + (endTime - startTime) + '</b></p>');
+                $("#divArea").append('<p>Average time: <b>' + (endTime - startTime)/ITERATIONS + '</b></p>');
             }
         }
     }
